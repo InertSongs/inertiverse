@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5664359135555014620}
   m_Layer: 0
   m_Name: AIShell
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sheet: {fileID: 0}
-  dex: 0
+  sheetDex: 0
+  sheetAtt: 0
 --- !u!114 &5026665639007712030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e197404d299fd43a609343f1cb7528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dex: 0
   passTurn: {fileID: 11400000, guid: d37a4a3c89b351748bc97d88c4c14677, type: 2}
 --- !u!114 &6849634035705947176
 MonoBehaviour:

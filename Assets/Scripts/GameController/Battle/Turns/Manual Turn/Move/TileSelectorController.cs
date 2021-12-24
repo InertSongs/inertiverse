@@ -20,7 +20,6 @@ public class TileSelectorController : MonoBehaviour
     public void TileSelected(InputAction.CallbackContext context)
     {
         selectedTile.Raise(gameObject.transform);
-        Debug.Log("Move you fool");
     }
 
 

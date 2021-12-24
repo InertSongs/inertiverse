@@ -19,18 +19,25 @@ public class TileSelectorSpawner : MonoBehaviour
 
         {
             for (int i = 0; i < checkTiles.Length; i++)
-                if (!Physics.Raycast(currentTurnPlayer.transform.position, checkTiles[i], 2))
+                if (!Physics.Raycast(currentTurnPlayer.transform.position, checkTiles[i], currentTurnPlayer.GetComponent<UnitLoader>().sheetDex))
                 {
                     Instantiate(tileSelector, currentTurnPlayer.transform.position + checkTiles[i], currentTurnPlayer.transform.rotation);
                     break;
                 }
         }
+        else
+        {
+            KillSelector(context);
+        }
+        
+    }
+    public void KillSelector(InputAction.CallbackContext context)
+    {
         if (context.canceled)
         {
             GameObject[] tileSelectors = GameObject.FindGameObjectsWithTag("TileSelector");
             for (int i = 0; i < tileSelectors.Length; i++)
                 Destroy(tileSelectors[i]);
         }
-
     }
 }

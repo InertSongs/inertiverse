@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6088dbbe893f34f92506535566984b, type: 3}
   m_Name: EGInert
   m_EditorClassIdentifier: 
+  friendlyUnit: 1
   race: {fileID: 11400000, guid: 1c7d6f61d98cc8a43a487864975e76ba, type: 2}
+  unitStats: {fileID: 11400000, guid: e6ec47e6d21cea24eafe37f238560cbc, type: 2}
+  visuals: {fileID: 2889880821725886578, guid: 91e2819b22022724ca8cbae9ad21170b, type: 3}
+  characterClass: {fileID: 11400000, guid: fa6a7adbbde591640a8a15ec082dabbf, type: 2}

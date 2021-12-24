@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3899492739999389419}
   - component: {fileID: 536914076}
   m_Layer: 0
-  m_Name: TileSpawner
+  m_Name: IndicatorSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb6632963394154b974d126c83af525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicator: {fileID: 8306270952531002323, guid: 740135871710d5944b1661eb8167faca, type: 3}
+  moveRangeIndicator: {fileID: 8306270952531002323, guid: 740135871710d5944b1661eb8167faca, type: 3}
+  actionRangeIndicator: {fileID: 3256366047574153873, guid: fddc60ddd79e4ca4cb71419e893079fb, type: 3}
 --- !u!114 &3899492739999389419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,20 +118,12 @@ MonoBehaviour:
     m_ActionName: ManualTurn/Show Move[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 551332d4-d3de-46d0-bbfe-f0ed2c0cdca4
-    m_ActionName: ManualTurn/W[/Keyboard/w]
+    m_ActionId: 5525b752-093e-449d-a3a0-88d2534c0d2e
+    m_ActionName: ManualTurn/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 5a2cddab-3591-4735-8ef8-abe020a9636f
-    m_ActionName: ManualTurn/A[/Keyboard/a]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3b9abdd6-b040-4dba-a2ae-c0985ace8fc5
-    m_ActionName: ManualTurn/S[/Keyboard/s]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e3be1e9f-2356-4bbd-9c58-9a343b6a7397
-    m_ActionName: ManualTurn/D[/Keyboard/d]
+    m_ActionId: 97bd1c0f-655d-49d8-8c51-7705159da0ff
+    m_ActionName: ManualTurn/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ManualTurn

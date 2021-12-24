@@ -5,9 +5,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class CharacterSheet : ScriptableObject
 {
+    [SerializeField]
+    private bool friendlyUnit;
     public UnitRace race;
-    public void visuals(Transform spawnLocation)
-    {
-        Instantiate(race.baseModel, spawnLocation);
-    }
+    public UnitStats unitStats;
+    public GameObject visuals;
+    public CharacterClass characterClass;
+
 }

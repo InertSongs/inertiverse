@@ -7,7 +7,7 @@ public class BattleState : MonoBehaviour
 {
     public EventBool setSpawns;
     private List<CurrentInitiativeOrder> initiative;
-    private List<HasGone> hasGone = new List<HasGone>();
+    private List<GameObject> hasGone = new List<GameObject>();
     public bool passTurn;
 
     void Start()
@@ -23,7 +23,7 @@ public class BattleState : MonoBehaviour
     {
         for (int i = 0; i < initiative.Count; i++)
         {
-            hasGone.Add(new HasGone(initiative[i].unit));
+            hasGone.Add(initiative[i].unit);
         }
         StartCoroutine(Turns());
         
@@ -34,7 +34,7 @@ public class BattleState : MonoBehaviour
         for(int i = 0;i<thisTurnCount;i++)
         {
             passTurn = false;
-            hasGone[0].unit.GetComponent<IDoTurn>().DoTurn();
+            hasGone[0].GetComponent<IDoTurn>().DoTurn();
             hasGone.RemoveAt(0);
             yield return new WaitUntil(() => passTurn == true);
         }

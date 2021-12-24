@@ -6,15 +6,11 @@ using System;
 public class Initiative : MonoBehaviour
 {
     public EventInitiativeList initiativeList;
-    private int dex;
     List<CurrentInitiativeOrder> currentInitiativeOrder = new List<CurrentInitiativeOrder>();
     public void addInitiative(GameObject initiative)
-    {
-        //adding base stats dex and racial modifier
-        dex = initiative.GetComponent<UnitLoader>().sheet.race.stats.dex + initiative.GetComponent<UnitLoader>().sheet.race.dexMod;
-        currentInitiativeOrder.Add(new CurrentInitiativeOrder(initiative, dex));
+    {    
+        currentInitiativeOrder.Add(new CurrentInitiativeOrder(initiative, initiative.GetComponent<UnitLoader>().sheetDex));
         currentInitiativeOrder.Sort();
-        initiativeList.Raise(currentInitiativeOrder);
-        
+        initiativeList.Raise(currentInitiativeOrder);   
     }
 }

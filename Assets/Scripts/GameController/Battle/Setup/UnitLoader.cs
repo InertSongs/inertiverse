@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class UnitLoader : MonoBehaviour
 {
-    public CharacterSheet sheet;
-    public int dex;
+    public int sheetDex;
+
+    public void LoadUnit(CharacterSheet spawningUnit, Transform spawnLocation)
+    {
+        
+        Instantiate(spawningUnit.visuals, spawnLocation);
+        sheetDex = spawningUnit.race.dexMod + spawningUnit.unitStats.dex;
+    }
 }
