@@ -14,11 +14,9 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < spawnsList.Count; i++)
         {
             Vector3 rotatedOffset = spawnsList[i].spawnLocation.transform.rotation * spawnOffset;
-            GameObject thisUnit = Instantiate(spawnsList[i].shell, spawnsList[i].spawnLocation.transform.position + rotatedOffset, spawnsList[i].spawnLocation.transform.rotation);
-            thisUnit.GetComponent<UnitLoader>().LoadUnit(spawnsList[i].sheet,thisUnit.transform);
+            GameObject thisUnit = Instantiate(spawnsList[i].sheet.shell, spawnsList[i].spawnLocation.transform.position + rotatedOffset, spawnsList[i].spawnLocation.transform.rotation);
+            thisUnit.GetComponent<UnitLoader>().sheet = spawnsList[i].sheet;
             initiative.Raise(thisUnit);
         }
     }
-    
-    
 }

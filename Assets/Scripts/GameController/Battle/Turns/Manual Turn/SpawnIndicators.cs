@@ -18,12 +18,12 @@ public class SpawnIndicators : MonoBehaviour
     public void DoMove(InputAction.CallbackContext context)
     {
         
-        ManageVisibleTiles(context, thisTurnPlayer.GetComponent<SetRange>().Set(GameObject.FindGameObjectsWithTag("Tile"), thisTurnPlayer.GetComponent<UnitLoader>().sheetDex), moveRangeIndicator);
+        ManageVisibleTiles(context, SetRange.Set(GameObject.FindGameObjectsWithTag("Tile"), thisTurnPlayer.GetComponent<UnitLoader>().sheet.sheetDex,thisTurnPlayer), moveRangeIndicator);
         
     }
     public void DoAction(InputAction.CallbackContext context)
     {
-        ManageVisibleTiles(context, thisTurnPlayer.GetComponent<SetRange>().Set(GameObject.FindGameObjectsWithTag("Tile"), thisTurnPlayer.GetComponent<UnitLoader>().sheetDex), actionRangeIndicator);
+        ManageVisibleTiles(context, SetRange.Set(GameObject.FindGameObjectsWithTag("Tile"), thisTurnPlayer.GetComponent<UnitLoader>().sheet.characterClass.classAbilities[0].actionRange,thisTurnPlayer), actionRangeIndicator);
     }
     private void ManageVisibleTiles(InputAction.CallbackContext context, List<GameObject> foundTiles, GameObject indicator)
     {

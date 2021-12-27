@@ -21,6 +21,4 @@ public class TileSelectorController : MonoBehaviour
     {
         selectedTile.Raise(gameObject.transform);
     }
-
-
 }

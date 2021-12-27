@@ -41,6 +41,14 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Ability"",
+                    ""type"": ""Button"",
+                    ""id"": ""b28b0766-358f-4aaf-8bd8-771f118b45d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -120,6 +128,17 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""984c794c-2b4a-41e0-8c86-f242236a856c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -131,6 +150,7 @@ public class @InputManager : IInputActionCollection, IDisposable
         m_ManualTurn_ShowMoveRange = m_ManualTurn.FindAction("Show Move Range", throwIfNotFound: true);
         m_ManualTurn_Movement = m_ManualTurn.FindAction("Movement", throwIfNotFound: true);
         m_ManualTurn_Interact = m_ManualTurn.FindAction("Interact", throwIfNotFound: true);
+        m_ManualTurn_Ability = m_ManualTurn.FindAction("Ability", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +203,7 @@ public class @InputManager : IInputActionCollection, IDisposable
     private readonly InputAction m_ManualTurn_ShowMoveRange;
     private readonly InputAction m_ManualTurn_Movement;
     private readonly InputAction m_ManualTurn_Interact;
+    private readonly InputAction m_ManualTurn_Ability;
     public struct ManualTurnActions
     {
         private @InputManager m_Wrapper;
@@ -190,6 +211,7 @@ public class @InputManager : IInputActionCollection, IDisposable
         public InputAction @ShowMoveRange => m_Wrapper.m_ManualTurn_ShowMoveRange;
         public InputAction @Movement => m_Wrapper.m_ManualTurn_Movement;
         public InputAction @Interact => m_Wrapper.m_ManualTurn_Interact;
+        public InputAction @Ability => m_Wrapper.m_ManualTurn_Ability;
         public InputActionMap Get() { return m_Wrapper.m_ManualTurn; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,6 +230,9 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnInteract;
+                @Ability.started -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnAbility;
+                @Ability.performed -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnAbility;
+                @Ability.canceled -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnAbility;
             }
             m_Wrapper.m_ManualTurnActionsCallbackInterface = instance;
             if (instance != null)
@@ -221,6 +246,9 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Ability.started += instance.OnAbility;
+                @Ability.performed += instance.OnAbility;
+                @Ability.canceled += instance.OnAbility;
             }
         }
     }
@@ -230,5 +258,6 @@ public class @InputManager : IInputActionCollection, IDisposable
         void OnShowMoveRange(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnAbility(InputAction.CallbackContext context);
     }
 }

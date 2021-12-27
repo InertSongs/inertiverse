@@ -9,7 +9,7 @@ public class Initiative : MonoBehaviour
     List<CurrentInitiativeOrder> currentInitiativeOrder = new List<CurrentInitiativeOrder>();
     public void addInitiative(GameObject initiative)
     {    
-        currentInitiativeOrder.Add(new CurrentInitiativeOrder(initiative, initiative.GetComponent<UnitLoader>().sheetDex));
+        currentInitiativeOrder.Add(new CurrentInitiativeOrder(initiative, initiative.GetComponent<UnitLoader>().sheet.sheetDex));
         currentInitiativeOrder.Sort();
         initiativeList.Raise(currentInitiativeOrder);   
     }

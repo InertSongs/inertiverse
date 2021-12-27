@@ -8,13 +8,11 @@ public class SpawnsList
 {
     public CharacterSheet sheet;
     public Transform spawnLocation;
-    public GameObject shell;
 
     public SpawnsList(CharacterSheet newSheet, Transform newLocation, GameObject newShell)
     {
         sheet = newSheet;
         spawnLocation = newLocation;
-        shell = newShell;
     }
 
 }

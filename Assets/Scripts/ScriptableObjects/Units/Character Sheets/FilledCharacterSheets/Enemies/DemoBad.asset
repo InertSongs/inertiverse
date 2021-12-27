@@ -15,5 +15,6 @@ MonoBehaviour:
   friendlyUnit: 0
   race: {fileID: 11400000, guid: 1c7d6f61d98cc8a43a487864975e76ba, type: 2}
   unitStats: {fileID: 11400000, guid: e6ec47e6d21cea24eafe37f238560cbc, type: 2}
-  visuals: {fileID: 673884024900492865, guid: 920b440decc90c543a93bf179a2a9cab, type: 3}
   characterClass: {fileID: 11400000, guid: fa6a7adbbde591640a8a15ec082dabbf, type: 2}
+  sheetDex: 5
+  shell: {fileID: 5435533079793715082, guid: 7f46a0d7732bb4f46a6cba869985c70c, type: 3}

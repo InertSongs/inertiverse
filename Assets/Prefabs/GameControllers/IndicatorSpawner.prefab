@@ -124,6 +124,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 97bd1c0f-655d-49d8-8c51-7705159da0ff
     m_ActionName: ManualTurn/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6451185152866100415}
+        m_TargetAssemblyTypeName: SpawnIndicators, Assembly-CSharp
+        m_MethodName: DoAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b28b0766-358f-4aaf-8bd8-771f118b45d6
+    m_ActionName: ManualTurn/Ability[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ManualTurn

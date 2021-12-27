@@ -6,9 +6,15 @@ using UnityEngine.InputSystem;
 public class TileSelectorSpawner : MonoBehaviour
 {
     private GameObject currentTurnPlayer;
-    public GameObject tileSelector;
-    private Vector3[] checkTiles = new[] { new Vector3(0, 0, 2), new Vector3(2, 0, 0), new Vector3(0, 0, -2), new Vector3(-2, 0, 0) };
+    [SerializeField]
+    private GameObject tileSelector;
+    private int tileWidth = 2;
+    private Vector3[] checkTiles; 
 
+    private void Start()
+    {
+        checkTiles = new[] { new Vector3(0, 0, tileWidth), new Vector3(tileWidth, 0, 0), new Vector3(0, 0, -tileWidth), new Vector3(-tileWidth, 0, 0) };
+    }
     public void SetActivePlayer(GameObject turnStarter)
     {
         currentTurnPlayer = turnStarter;
@@ -16,10 +22,9 @@ public class TileSelectorSpawner : MonoBehaviour
     public void SpawnTileChooser(InputAction.CallbackContext context)
     {
         if (context.performed)
-
         {
             for (int i = 0; i < checkTiles.Length; i++)
-                if (!Physics.Raycast(currentTurnPlayer.transform.position, checkTiles[i], currentTurnPlayer.GetComponent<UnitLoader>().sheetDex))
+                if (!Physics.Raycast(currentTurnPlayer.transform.position, checkTiles[i], tileWidth))
                 {
                     Instantiate(tileSelector, currentTurnPlayer.transform.position + checkTiles[i], currentTurnPlayer.transform.rotation);
                     break;

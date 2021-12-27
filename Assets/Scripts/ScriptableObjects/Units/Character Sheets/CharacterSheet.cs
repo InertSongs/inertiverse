@@ -7,9 +7,16 @@ public class CharacterSheet : ScriptableObject
 {
     [SerializeField]
     private bool friendlyUnit;
-    public UnitRace race;
-    public UnitStats unitStats;
-    public GameObject visuals;
+    [SerializeField]
+    private UnitRace race;
+    [SerializeField]
+    private UnitStats unitStats;
     public CharacterClass characterClass;
+    public int sheetDex;
+    public GameObject shell;
 
+    private void OnEnable()
+    {
+        sheetDex = unitStats.dex + race.dexMod;
+    }
 }

@@ -8,7 +8,7 @@ public class ManualUnitMover : MonoBehaviour
     public NavMeshAgent agent;
     public void MoveToSelector(Transform selection)
     {
-        if(Vector3.Distance(selection.position,gameObject.transform.position)< gameObject.GetComponent<UnitLoader>().sheetDex)
+        if(Vector3.Distance(selection.position,gameObject.transform.position)< gameObject.GetComponent<UnitLoader>().sheet.sheetDex)
         {
             agent.SetDestination(selection.position);
         }

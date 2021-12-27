@@ -1,19 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetRange : MonoBehaviour
+public class SetRange
 {
     
-    public List<GameObject> Set(GameObject[] checklist,int checkDistance)
+    public static List<GameObject> Set(GameObject[] checklist,int checkDistance, GameObject setter)
     {
-        List<GameObject> foundTiles = new List<GameObject>();
+        List<GameObject> foundObjects = new List<GameObject>();
         for (int i = 0; i < checklist.Length; i++)
         {
-            if (Vector3.Distance(checklist[i].transform.position, gameObject.transform.position) < checkDistance)
+            if (Vector3.Distance(checklist[i].transform.position, setter.transform.position) < checkDistance)
             {
-                foundTiles.Add(checklist[i]);
+                foundObjects.Add(checklist[i]);
             }
         }
-        return foundTiles;
+        return foundObjects;
     }
 }
