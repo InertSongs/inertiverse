@@ -49,6 +49,22 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pass"",
+                    ""type"": ""Button"",
+                    ""id"": ""b870050b-f402-46c9-be8c-5c22162b205e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MenuNav"",
+                    ""type"": ""Value"",
+                    ""id"": ""bf51aa87-6149-439d-a6e3-87379f2d3692"",
+                    ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -139,6 +155,50 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""action"": ""Ability"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5cbbf44f-3f38-4584-84bf-d73ad605c4a3"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pass"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""f3ddf300-859d-4d6f-83c2-63b2eaab46eb"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNav"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""647afb1b-2af3-444a-98d8-77b8e1e9973c"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""f3a7e838-41e7-47f8-8709-9ae4345ca791"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -151,6 +211,8 @@ public class @InputManager : IInputActionCollection, IDisposable
         m_ManualTurn_Movement = m_ManualTurn.FindAction("Movement", throwIfNotFound: true);
         m_ManualTurn_Interact = m_ManualTurn.FindAction("Interact", throwIfNotFound: true);
         m_ManualTurn_Ability = m_ManualTurn.FindAction("Ability", throwIfNotFound: true);
+        m_ManualTurn_Pass = m_ManualTurn.FindAction("Pass", throwIfNotFound: true);
+        m_ManualTurn_MenuNav = m_ManualTurn.FindAction("MenuNav", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -204,6 +266,8 @@ public class @InputManager : IInputActionCollection, IDisposable
     private readonly InputAction m_ManualTurn_Movement;
     private readonly InputAction m_ManualTurn_Interact;
     private readonly InputAction m_ManualTurn_Ability;
+    private readonly InputAction m_ManualTurn_Pass;
+    private readonly InputAction m_ManualTurn_MenuNav;
     public struct ManualTurnActions
     {
         private @InputManager m_Wrapper;
@@ -212,6 +276,8 @@ public class @InputManager : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_ManualTurn_Movement;
         public InputAction @Interact => m_Wrapper.m_ManualTurn_Interact;
         public InputAction @Ability => m_Wrapper.m_ManualTurn_Ability;
+        public InputAction @Pass => m_Wrapper.m_ManualTurn_Pass;
+        public InputAction @MenuNav => m_Wrapper.m_ManualTurn_MenuNav;
         public InputActionMap Get() { return m_Wrapper.m_ManualTurn; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -233,6 +299,12 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Ability.started -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnAbility;
                 @Ability.performed -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnAbility;
                 @Ability.canceled -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnAbility;
+                @Pass.started -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnPass;
+                @Pass.performed -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnPass;
+                @Pass.canceled -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnPass;
+                @MenuNav.started -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnMenuNav;
+                @MenuNav.performed -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnMenuNav;
+                @MenuNav.canceled -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnMenuNav;
             }
             m_Wrapper.m_ManualTurnActionsCallbackInterface = instance;
             if (instance != null)
@@ -249,6 +321,12 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Ability.started += instance.OnAbility;
                 @Ability.performed += instance.OnAbility;
                 @Ability.canceled += instance.OnAbility;
+                @Pass.started += instance.OnPass;
+                @Pass.performed += instance.OnPass;
+                @Pass.canceled += instance.OnPass;
+                @MenuNav.started += instance.OnMenuNav;
+                @MenuNav.performed += instance.OnMenuNav;
+                @MenuNav.canceled += instance.OnMenuNav;
             }
         }
     }
@@ -259,5 +337,7 @@ public class @InputManager : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnAbility(InputAction.CallbackContext context);
+        void OnPass(InputAction.CallbackContext context);
+        void OnMenuNav(InputAction.CallbackContext context);
     }
 }

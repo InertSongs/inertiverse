@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenuAttribute]
 public class UnitRace : ScriptableObject
 {
-    public int dexMod;  
+    public int dexMod;
+    public int attentionMod;
 }

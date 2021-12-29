@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class TileSelectorSpawner : MonoBehaviour
 {
-    private GameObject currentTurnPlayer;
+    [SerializeField]
+    private Initiative initiative;
     [SerializeField]
     private GameObject tileSelector;
     private int tileWidth = 2;
@@ -15,18 +16,14 @@ public class TileSelectorSpawner : MonoBehaviour
     {
         checkTiles = new[] { new Vector3(0, 0, tileWidth), new Vector3(tileWidth, 0, 0), new Vector3(0, 0, -tileWidth), new Vector3(-tileWidth, 0, 0) };
     }
-    public void SetActivePlayer(GameObject turnStarter)
-    {
-        currentTurnPlayer = turnStarter;
-    }
     public void SpawnTileChooser(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             for (int i = 0; i < checkTiles.Length; i++)
-                if (!Physics.Raycast(currentTurnPlayer.transform.position, checkTiles[i], tileWidth))
+                if (!Physics.Raycast(initiative.activePlayer.unit.transform.position, checkTiles[i], tileWidth))
                 {
-                    Instantiate(tileSelector, currentTurnPlayer.transform.position + checkTiles[i], currentTurnPlayer.transform.rotation);
+                    Instantiate(tileSelector, initiative.activePlayer.unit.transform.position + checkTiles[i], initiative.activePlayer.unit.transform.rotation);
                     break;
                 }
         }

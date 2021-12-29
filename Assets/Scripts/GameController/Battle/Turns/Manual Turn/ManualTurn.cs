@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class ManualTurn : MonoBehaviour, IDoTurn
 {
-    public EventGameObject startTurn;
-    public bool myTurn = false;
-    
-    
-
+    [SerializeField]
+    private Initiative initiative;
     public void DoTurn()
+    { 
+       
+    }
+    public void ForcePassTurn(InputAction.CallbackContext context)
     {
-        myTurn = true;
-       
-        startTurn.Raise(gameObject);
-       
+        if(context.performed)
+        {
+            PassTurn();
+        }
     }
     public void PassTurn()
     {
-        myTurn = false;
+        initiative.PassTurn();
     }
     
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b811e3082122c547a922c42bdbb6444, type: 3}
   m_Name: BaseStats
   m_EditorClassIdentifier: 
-  hp: 10
+  attention: 2
   dex: 5
   damage: 1

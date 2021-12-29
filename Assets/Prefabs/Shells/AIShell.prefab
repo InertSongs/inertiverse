@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3949325391657671502}
-  - component: {fileID: 5501537746992475256}
   - component: {fileID: 5026665639007712030}
   - component: {fileID: 5664359135555014620}
   - component: {fileID: -8158782859122794371}
@@ -36,19 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5501537746992475256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435533079793715082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d7bb4903ecac4047a0f547b539754a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sheet: {fileID: 0}
 --- !u!114 &5026665639007712030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e197404d299fd43a609343f1cb7528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passTurn: {fileID: 11400000, guid: d37a4a3c89b351748bc97d88c4c14677, type: 2}
+  initiative: {fileID: 11400000, guid: 61abdb5d1a964b74d9cc26a4ca2c5a3c, type: 2}
 --- !u!195 &5664359135555014620
 NavMeshAgent:
   m_ObjectHideFlags: 0

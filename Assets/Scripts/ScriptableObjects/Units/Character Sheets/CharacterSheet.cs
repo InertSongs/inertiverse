@@ -13,10 +13,12 @@ public class CharacterSheet : ScriptableObject
     private UnitStats unitStats;
     public CharacterClass characterClass;
     public int sheetDex;
+    public int sheetAtt;
     public GameObject shell;
 
     private void OnEnable()
     {
         sheetDex = unitStats.dex + race.dexMod;
+        sheetAtt = unitStats.attention + race.attentionMod;
     }
 }

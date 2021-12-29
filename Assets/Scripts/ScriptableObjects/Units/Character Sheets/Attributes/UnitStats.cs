@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class UnitStats : ScriptableObject
 {
-    public int hp;
+    public int attention;
     public int dex;
     public int damage;
 }

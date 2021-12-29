@@ -9,17 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5541638571191450702}
-  - component: {fileID: 3922752928195283832}
   - component: {fileID: 8267651358951166139}
-  - component: {fileID: 7077318571384390867}
   - component: {fileID: -8395960782133341421}
   - component: {fileID: 4198946965113686781}
-  - component: {fileID: -489387768025053404}
-  - component: {fileID: -4364828100358098730}
   - component: {fileID: 9051185436015594059}
   - component: {fileID: -1604707262181067807}
   - component: {fileID: 1714145457093114438}
-  - component: {fileID: 8576637669009448441}
+  - component: {fileID: -1990454662040775832}
+  - component: {fileID: -7280498065803914378}
   m_Layer: 0
   m_Name: ManualShell
   m_TagString: Unit
@@ -41,19 +38,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3922752928195283832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3551067304004083850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d7bb4903ecac4047a0f547b539754a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sheet: {fileID: 0}
 --- !u!114 &8267651358951166139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,36 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0a9aa485d7bc244aae0a5128c8ac1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTurn: {fileID: 11400000, guid: 6115755534807d64f97608078715f7ae, type: 2}
-  myTurn: 0
---- !u!114 &7077318571384390867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3551067304004083850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b4b9e90b60ef5498630edca390cc13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventBool: {fileID: 11400000, guid: d37a4a3c89b351748bc97d88c4c14677, type: 2}
-  boolUnityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8267651358951166139}
-        m_TargetAssemblyTypeName: ManualTurn, Assembly-CSharp
-        m_MethodName: PassTurn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  initiative: {fileID: 11400000, guid: 61abdb5d1a964b74d9cc26a4ca2c5a3c, type: 2}
 --- !u!195 &-8395960782133341421
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -134,47 +89,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &-489387768025053404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3551067304004083850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 427be6b8637adcc44bfb8559ae1756eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: -8395960782133341421}
---- !u!114 &-4364828100358098730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3551067304004083850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e75e9dce85b82f545a9e2ac6197a243e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventTransform: {fileID: 11400000, guid: da8c895d0efe81342b26a0d8fdbb9882, type: 2}
-  transformUnityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -489387768025053404}
-        m_TargetAssemblyTypeName: ManualUnitMover, Assembly-CSharp
-        m_MethodName: MoveToSelector
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!23 &9051185436015594059
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -238,7 +152,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8576637669009448441
+--- !u!114 &-1990454662040775832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,6 +161,98 @@ MonoBehaviour:
   m_GameObject: {fileID: 3551067304004083850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33b092201100c1942b6834df2b470939, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a08b11bb8cc275743904ed3e7777091c, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e3e509a-5ce7-4402-a003-9772acce0587
+    m_ActionName: ManualTurn/Show Move Range[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5525b752-093e-449d-a3a0-88d2534c0d2e
+    m_ActionName: ManualTurn/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 97bd1c0f-655d-49d8-8c51-7705159da0ff
+    m_ActionName: ManualTurn/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7280498065803914378}
+        m_TargetAssemblyTypeName: ActionHandler, Assembly-CSharp
+        m_MethodName: ChooseTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b28b0766-358f-4aaf-8bd8-771f118b45d6
+    m_ActionName: ManualTurn/Ability[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8267651358951166139}
+        m_TargetAssemblyTypeName: ManualTurn, Assembly-CSharp
+        m_MethodName: ForcePassTurn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b870050b-f402-46c9-be8c-5c22162b205e
+    m_ActionName: ManualTurn/Pass[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7280498065803914378}
+        m_TargetAssemblyTypeName: ActionHandler, Assembly-CSharp
+        m_MethodName: IncrementTargetList
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bf51aa87-6149-439d-a6e3-87379f2d3692
+    m_ActionName: ManualTurn/MenuNav[/Keyboard/s,/Keyboard/w]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ManualTurn
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &-7280498065803914378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3551067304004083850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5aa1a5ed799fd4295f1545e3ade076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initiative: {fileID: 11400000, guid: 61abdb5d1a964b74d9cc26a4ca2c5a3c, type: 2}
+  ability: {fileID: 11400000, guid: 726b4316165a79141b87025c8fa381a1, type: 2}

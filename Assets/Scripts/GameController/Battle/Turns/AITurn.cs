@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class AITurn : MonoBehaviour, IDoTurn
 {
-    public EventBool passTurn;
-
+    [SerializeField]
+    private Initiative initiative;
+    
     public void DoTurn()
     {
-        passTurn.Raise(true); 
+        Debug.Log("I went");
+        initiative.PassTurn();
     }
 }

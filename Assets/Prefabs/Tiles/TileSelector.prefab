@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: -8512233517713262866}
   - component: {fileID: 1902145209913335575}
   - component: {fileID: -1630684449054306096}
-  - component: {fileID: 7822111173762819142}
   m_Layer: 0
   m_Name: TileSelector
   m_TagString: TileSelector
@@ -128,8 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec9c6fc786d3b642be9eae7392d5961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1902145209913335575}
-  selectedTile: {fileID: 11400000, guid: da8c895d0efe81342b26a0d8fdbb9882, type: 2}
+  initiative: {fileID: 11400000, guid: 61abdb5d1a964b74d9cc26a4ca2c5a3c, type: 2}
 --- !u!195 &1902145209913335575
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -225,36 +223,12 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 97bd1c0f-655d-49d8-8c51-7705159da0ff
     m_ActionName: ManualTurn/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b28b0766-358f-4aaf-8bd8-771f118b45d6
+    m_ActionName: ManualTurn/Ability[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ManualTurn
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7822111173762819142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6221352841732493946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0473e3a67b2b7244b997648ddb857d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventGameObject: {fileID: 11400000, guid: 6115755534807d64f97608078715f7ae, type: 2}
-  gameObjectUnityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -8512233517713262866}
-        m_TargetAssemblyTypeName: TileSelectorController, Assembly-CSharp
-        m_MethodName: SetActivePlayer
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

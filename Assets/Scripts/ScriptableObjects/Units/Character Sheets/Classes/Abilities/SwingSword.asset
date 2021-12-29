@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e134c07cb85824fbfc0e865be01368, type: 3}
   m_Name: SwingSword
   m_EditorClassIdentifier: 
-  actionRange: 3
+  actionRange: 10

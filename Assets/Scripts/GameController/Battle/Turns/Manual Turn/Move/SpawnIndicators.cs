@@ -8,7 +8,8 @@ using UnityEngine.InputSystem;
 public class SpawnIndicators : MonoBehaviour
 {
     private Vector3 indicatorOffset = new Vector3(0, 1.5f, 0);
-    private GameObject thisTurnPlayer;
+    [SerializeField]
+    private Initiative initiative;
     [SerializeField]
     private GameObject moveRangeIndicator;
     [SerializeField]
@@ -16,14 +17,12 @@ public class SpawnIndicators : MonoBehaviour
     
 
     public void DoMove(InputAction.CallbackContext context)
-    {
-        
-        ManageVisibleTiles(context, SetRange.Set(GameObject.FindGameObjectsWithTag("Tile"), thisTurnPlayer.GetComponent<UnitLoader>().sheet.sheetDex,thisTurnPlayer), moveRangeIndicator);
-        
+    {       
+        ManageVisibleTiles(context, SetRange.Set(GameObject.FindGameObjectsWithTag("Tile"), initiative.activePlayer.sheet.sheetDex,initiative.activePlayer.unit), moveRangeIndicator);   
     }
     public void DoAction(InputAction.CallbackContext context)
     {
-        ManageVisibleTiles(context, SetRange.Set(GameObject.FindGameObjectsWithTag("Tile"), thisTurnPlayer.GetComponent<UnitLoader>().sheet.characterClass.classAbilities[0].actionRange,thisTurnPlayer), actionRangeIndicator);
+        ManageVisibleTiles(context, SetRange.Set(GameObject.FindGameObjectsWithTag("Tile"), initiative.activePlayer.sheet.characterClass.classAbilities[0].actionRange,initiative.activePlayer.unit), actionRangeIndicator);
     }
     private void ManageVisibleTiles(InputAction.CallbackContext context, List<GameObject> foundTiles, GameObject indicator)
     {
@@ -42,9 +41,5 @@ public class SpawnIndicators : MonoBehaviour
             for (int i = 0; i < indicators.Length; i++)
                 Destroy(indicators[i]);
         }
-    }
-    public void UpdateActivePlayer(GameObject manualTurnStarter)
-    {
-        thisTurnPlayer = manualTurnStarter;
     }
 }
