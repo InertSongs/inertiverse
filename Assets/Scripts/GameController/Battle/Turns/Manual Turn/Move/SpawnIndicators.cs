@@ -17,12 +17,14 @@ public class SpawnIndicators : MonoBehaviour
     
 
     public void DoMove(InputAction.CallbackContext context)
-    {       
-        ManageVisibleTiles(context, SetRange.Set(GameObject.FindGameObjectsWithTag("Tile"), initiative.activePlayer.sheet.sheetDex,initiative.activePlayer.unit), moveRangeIndicator);   
+    {
+        List<GameObject> checkTiles = new List<GameObject>(GameObject.FindGameObjectsWithTag("Tile"));
+        ManageVisibleTiles(context, SetRange.Set(checkTiles, initiative.activePlayer.sheet.sheetDex,initiative.activePlayer.unit), moveRangeIndicator);   
     }
     public void DoAction(InputAction.CallbackContext context)
     {
-        ManageVisibleTiles(context, SetRange.Set(GameObject.FindGameObjectsWithTag("Tile"), initiative.activePlayer.sheet.characterClass.classAbilities[0].actionRange,initiative.activePlayer.unit), actionRangeIndicator);
+        List<GameObject> checkTiles = new List<GameObject>(GameObject.FindGameObjectsWithTag("Tile"));
+        ManageVisibleTiles(context, SetRange.Set(checkTiles, initiative.activePlayer.sheet.characterClass.classAbilities[0].actionRange,initiative.activePlayer.unit), actionRangeIndicator);
     }
     private void ManageVisibleTiles(InputAction.CallbackContext context, List<GameObject> foundTiles, GameObject indicator)
     {
