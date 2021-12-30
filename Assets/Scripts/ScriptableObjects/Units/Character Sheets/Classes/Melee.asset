@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Melee
   m_EditorClassIdentifier: 
   classAbilities:
-  - {fileID: 11400000, guid: 726b4316165a79141b87025c8fa381a1, type: 2}
+  - {fileID: 11400000, guid: 0bce4fd5574ca214496d0e8f8da53a2c, type: 2}

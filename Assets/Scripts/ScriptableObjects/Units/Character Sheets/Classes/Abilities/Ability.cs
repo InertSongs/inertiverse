@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,9 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Ability : ScriptableObject
 {
+    public Initiative initiative;
     public int actionRange;
-    enum targetType {SingleUnit, SingleTileAoE};
-    [SerializeField]
-    private targetType myTargetType;
-    [SerializeField]
-    private Initiative initiative;
-
-    private void OnEnable()
+   public virtual void Perform(bool manual)
     {
         
     }
