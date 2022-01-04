@@ -6,10 +6,14 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Ability : ScriptableObject
 {
-    public Initiative initiative;
-    public int actionRange;
-   public virtual void Perform(bool manual)
+   public int actionRange;
+   public GameObject UI;
+    private void OnEnable()
     {
-        
+        UI = FindObjectOfType<Canvas>().gameObject;
     }
+    public virtual void PerformManual()
+   {
+        
+   }
 }

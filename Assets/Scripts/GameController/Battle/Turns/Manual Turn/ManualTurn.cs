@@ -5,22 +5,31 @@ using UnityEngine.InputSystem;
 
 public class ManualTurn : MonoBehaviour, IDoTurn
 {
-    [SerializeField]
-    private Initiative initiative;
+    private GameObject UI;
+    private void Start()
+    {
+        UI = FindObjectOfType<Canvas>().gameObject;
+    }
     public void DoTurn()
     { 
        
     }
     public void ForcePassTurn(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed && gameObject == Initiative.activePlayer.unit)
+        { Initiative.PassTurn(); }
+    }
+    public void UseAbility(InputAction.CallbackContext context)
+    {
+        if (context.performed && gameObject == Initiative.activePlayer.unit)
         {
-            PassTurn();
+            UI.GetComponent<UIController>().OpenMenu(Initiative.activePlayer.sheet.characterClass.classAbilities);
         }
+         
     }
     public void PassTurn()
     {
-        initiative.PassTurn();
+        Initiative.PassTurn();
     }
     
 }

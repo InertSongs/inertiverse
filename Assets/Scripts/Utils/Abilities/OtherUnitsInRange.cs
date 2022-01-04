@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class OtherUnitsInRange
 {
-    public static List<CurrentInitiativeOrder> SetTargets(Ability ability)
+    public static List<GameObject> SetTargets(Ability ability)
     {
-        List<CurrentInitiativeOrder> theseTargets = new List<CurrentInitiativeOrder>();
-        foreach(CurrentInitiativeOrder thisUnit in ability.initiative.currentInitiativeOrder)
+        List<GameObject> theseTargets = new List<GameObject>();
+        foreach(GameObject thisUnit in Initiative.shellOrder)
         {
-            if(thisUnit != ability.initiative.activePlayer)
+            if(thisUnit != Initiative.activePlayer.unit)
             {
-                theseTargets.Add(thisUnit);
+                theseTargets.Add(thisUnit);   
             }
         }
-        return SetRange.Set(theseTargets, ability.actionRange, ability.initiative.activePlayer.unit);
+        return SetRange.Set(theseTargets, ability.actionRange, Initiative.activePlayer.unit);
     }
 }

@@ -1,19 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class SingleUnitTarget : Ability
-{    
-    public override void Perform(bool manual)
+{
+    public override void PerformManual()
     {
-        if (manual == true)
-        {
-            List<CurrentInitiativeOrder> validTargets = OtherUnitsInRange.SetTargets(this);
-        }
-        else
-        {
-
-        }
+        UI.GetComponent<UIController>().OpenMenu(OtherUnitsInRange.SetTargets(this));
     }
 }

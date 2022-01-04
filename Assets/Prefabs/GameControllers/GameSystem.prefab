@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8119427867826418827}
   - component: {fileID: 4671863003655113538}
-  - component: {fileID: 4125113149846894633}
+  - component: {fileID: 6680404204930001130}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17bc18d3f6ce9244493dca038e4cfbb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initiative: {fileID: 11400000, guid: 61abdb5d1a964b74d9cc26a4ca2c5a3c, type: 2}
   levelUnits: {fileID: 11400000, guid: 47d54bad6cfe9d0449ae8407f898fcbd, type: 2}
-  spawnTiles: []
---- !u!114 &4125113149846894633
+  spawnTiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &6680404204930001130
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,11 +59,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3274005947323766561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b4b9e90b60ef5498630edca390cc13, type: 3}
+  m_Script: {fileID: 11500000, guid: a4b017fd3c03cf440b33383f5e0ffbc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventBool: {fileID: 11400000, guid: 0f015a39a9a0729429e2c42f7149d35b, type: 2}
-  boolUnityEvent:
+  eventObject: {fileID: 11400000, guid: 2de627a5ed31e9a4fbc85be0b459770f, type: 2}
+  objectUnityEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4671863003655113538}

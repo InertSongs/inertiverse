@@ -5,8 +5,6 @@ using UnityEngine;
 public class GameSystem : MonoBehaviour
 {
     [SerializeField]
-    private Initiative initiative;
-    [SerializeField]
     private LevelUnits levelUnits;
     [SerializeField]
     private List<Transform> spawnTiles;
@@ -17,7 +15,8 @@ public class GameSystem : MonoBehaviour
     }
     public void StartRound()
     {
-        StartCoroutine(initiative.Turns());
+        Initiative.combatActive = true;
+        StartCoroutine(Initiative.Turns());
     }
 
 }

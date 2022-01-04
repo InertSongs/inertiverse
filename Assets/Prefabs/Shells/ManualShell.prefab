@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: -1604707262181067807}
   - component: {fileID: 1714145457093114438}
   - component: {fileID: -1990454662040775832}
-  - component: {fileID: -7280498065803914378}
   m_Layer: 0
   m_Name: ManualShell
   m_TagString: Unit
@@ -50,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0a9aa485d7bc244aae0a5128c8ac1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initiative: {fileID: 11400000, guid: 61abdb5d1a964b74d9cc26a4ca2c5a3c, type: 2}
 --- !u!195 &-8395960782133341421
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -191,9 +189,9 @@ MonoBehaviour:
     m_ActionName: ManualTurn/Interact[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -7280498065803914378}
-        m_TargetAssemblyTypeName: ActionHandler, Assembly-CSharp
-        m_MethodName: ChooseTarget
+      - m_Target: {fileID: 8267651358951166139}
+        m_TargetAssemblyTypeName: ManualTurn, Assembly-CSharp
+        m_MethodName: UseAbility
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -222,19 +220,7 @@ MonoBehaviour:
     m_ActionId: b870050b-f402-46c9-be8c-5c22162b205e
     m_ActionName: ManualTurn/Pass[/Keyboard/q]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -7280498065803914378}
-        m_TargetAssemblyTypeName: ActionHandler, Assembly-CSharp
-        m_MethodName: IncrementTargetList
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: bf51aa87-6149-439d-a6e3-87379f2d3692
     m_ActionName: ManualTurn/MenuNav[/Keyboard/s,/Keyboard/w]
   m_NeverAutoSwitchControlSchemes: 0
@@ -242,17 +228,3 @@ MonoBehaviour:
   m_DefaultActionMap: ManualTurn
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &-7280498065803914378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3551067304004083850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5aa1a5ed799fd4295f1545e3ade076, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initiative: {fileID: 11400000, guid: 61abdb5d1a964b74d9cc26a4ca2c5a3c, type: 2}
-  ability: {fileID: 11400000, guid: 726b4316165a79141b87025c8fa381a1, type: 2}
