@@ -1,9 +1,7 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.InputSystem;
 using System.Linq;
 
 public class AutoList : MonoBehaviour

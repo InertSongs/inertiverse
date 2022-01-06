@@ -8,20 +8,27 @@ public class HandleSelection
 {
     public delegate void SelectionHandler(object selection);
     public static SelectionHandler thisSelection;
-    Dictionary<Type, SelectionHandler> selectionPair;
+    public static Dictionary<Type, SelectionHandler> selectionPair;
    
-    private void Awake()
+    public static void InitializeSelectionHandler()
     {
-        selectionPair.Add(Type.GetType("Ability"),HandleAbility);
+        selectionPair = new Dictionary<Type, SelectionHandler>();
+        selectionPair.Add(Type.GetType("SingleUnitTarget"),HandleAbility);
+        selectionPair.Add(Type.GetType("CharacterSheet"), HandleSheet);
     }
-    void CastSelection(object selection)
+    public static void DelegateSelection(object selection)
     {
         thisSelection = selectionPair[selection.GetType()];
         thisSelection(selection);
     }
-    void HandleAbility(object selection) 
+    public static void HandleAbility(object selection) 
     {
-        
+        Ability thisAbility = selection as Ability;
+        thisAbility.PerformManual();
+    }
+    public static void HandleSheet(object selection)
+    {
+
     }
 
 

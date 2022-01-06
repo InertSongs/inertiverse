@@ -5,16 +5,21 @@ using System.Linq;
 
 public class OtherUnitsInRange
 {
-    public static List<GameObject> SetTargets(Ability ability)
+    public static List<CurrentInitiativeOrder> SetTargets(Ability ability)
     {
-        List<GameObject> theseTargets = new List<GameObject>();
+        List<GameObject> targetsToCheck = new List<GameObject>();
         foreach(GameObject thisUnit in Initiative.shellOrder)
         {
             if(thisUnit != Initiative.activePlayer.unit)
             {
-                theseTargets.Add(thisUnit);   
+                targetsToCheck.Add(thisUnit); 
             }
         }
-        return SetRange.Set(theseTargets, ability.actionRange, Initiative.activePlayer.unit);
+        List<CurrentInitiativeOrder> returnTargets = new List<CurrentInitiativeOrder>();
+        foreach(GameObject thisUnit in SetRange.Set(targetsToCheck, ability.actionRange, Initiative.activePlayer.unit))
+        {
+            returnTargets.Add(Initiative.nextInitiativeOrder[Initiative.shellOrder.IndexOf(thisUnit)]);
+        }
+        return returnTargets;
     }
 }

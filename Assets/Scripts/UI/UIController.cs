@@ -1,17 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
-using System.Linq;
 
 public class UIController : MonoBehaviour
 {
-    private List<ButtonPair> activeButtonList;
+    private List<ButtonPair> activeButtonList = new List<ButtonPair>();
     private ButtonPair currentSelection;
-    
+
+    private void Awake()
+    {
+        HandleSelection.InitializeSelectionHandler();
+    }
     public void OpenMenu<T>(List<T> menuRequest)
     {
-        activeButtonList = new List<ButtonPair>();
         activeButtonList = gameObject.GetComponent<AutoList>().PopUp(menuRequest);
         currentSelection = activeButtonList[0];
         currentSelection.button.Select();
@@ -26,9 +27,13 @@ public class UIController : MonoBehaviour
     }
     public void ConfirmSelection(InputAction.CallbackContext context)
     {
-        for (int i = 0; i < activeButtonList.Count; i++)
+        if (context.performed)
         {
-            Destroy(activeButtonList[i].button.gameObject);
+            for (int i = 0; i < activeButtonList.Count; i++)
+            {
+                Destroy(activeButtonList[i].button.gameObject);
+            }
+            HandleSelection.DelegateSelection(currentSelection.action);
         }
     }
 }

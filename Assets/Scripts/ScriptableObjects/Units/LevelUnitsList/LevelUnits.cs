@@ -11,7 +11,7 @@ public class LevelUnits : ScriptableObject
 
     public void Populate(List<Transform> spawnLocationList)
     {
-        Initiative.currentInitiativeOrder = new List<CurrentInitiativeOrder>();
+        Initiative.nextInitiativeOrder = new List<CurrentInitiativeOrder>();
         for (int i = 0; i < spawnLocationList.Count; i++)
         {
             Vector3 rotatedOffset = spawnLocationList[i].rotation * spawnOffset;
