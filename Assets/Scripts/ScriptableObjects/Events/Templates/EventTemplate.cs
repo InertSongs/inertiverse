@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ public abstract class EventTemplate<TValue> : ScriptableObject
 
     public void Raise(TValue go)
     {
-       
+
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
             listeners[i].OnEventRaised(go);

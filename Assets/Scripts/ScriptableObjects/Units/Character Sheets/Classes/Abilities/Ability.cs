@@ -1,19 +1,25 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class Ability : ScriptableObject
+
+[CreateAssetMenu(fileName = "NewRootAbilityAction", menuName = "Character Sheets/Abilities/Root")]
+public class Ability : RootTurnAction
 {
-   public int actionRange;
-   public GameObject UI;
-    private void OnEnable()
+    public int actionRange, attentionEffect;
+    [SerializeField] GameObject indicator;
+    [SerializeField] Menu sub;
+
+    public override void SelectedInCombat() => BattleSystem.currentUI.GetComponent<UIController>().OpenMenu(sub);  
+    public void TaxAbility() => Initiative.activePlayer.currentAP[Initiative.activePlayer.actionSet.ability] -= 1;
+
+    public virtual List<CharacterSheet> HitList(GameObject target)
     {
-        UI = FindObjectOfType<Canvas>().gameObject;
+        return null;
     }
-    public virtual void PerformManual()
-   {
-        
-   }
+    public void ShowRange()
+    {
+        selectRange = SetRange.Set(GameObject.FindGameObjectsWithTag("Tile").ToList(), actionRange, Initiative.activePlayer.shell);
+        BattleSystem.currentIndicatorHandler.Spawn(selectRange, indicator);
+    }
 }

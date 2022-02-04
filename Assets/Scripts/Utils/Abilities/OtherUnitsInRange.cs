@@ -1,24 +1,31 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class OtherUnitsInRange
 {
-    public static List<CurrentInitiativeOrder> SetTargets(Ability ability)
+    public static List<CharacterSheet> SetTargets(Ability ability)
     {
         List<GameObject> targetsToCheck = new List<GameObject>();
-        foreach(GameObject thisUnit in Initiative.shellOrder)
+        foreach (CharacterSheet sheet in Initiative.nextInitiativeOrder)
         {
-            if(thisUnit != Initiative.activePlayer.unit)
+            GameObject thisUnit = sheet.shell;
+            if (thisUnit != Initiative.activeShell)
             {
-                targetsToCheck.Add(thisUnit); 
+                targetsToCheck.Add(thisUnit);
             }
         }
-        List<CurrentInitiativeOrder> returnTargets = new List<CurrentInitiativeOrder>();
-        foreach(GameObject thisUnit in SetRange.Set(targetsToCheck, ability.actionRange, Initiative.activePlayer.unit))
+        List<CharacterSheet> returnTargets = new List<CharacterSheet>();
+        foreach (GameObject thisUnit in SetRange.Set(targetsToCheck, ability.actionRange, Initiative.activeShell))
         {
-            returnTargets.Add(Initiative.nextInitiativeOrder[Initiative.shellOrder.IndexOf(thisUnit)]);
+            CharacterSheet targetSheet = null;
+            foreach (CharacterSheet sheet in Initiative.nextInitiativeOrder)
+            {
+                if (sheet.shell == thisUnit)
+                {
+                    targetSheet = sheet;
+                }
+            }
+            returnTargets.Add(targetSheet);
         }
         return returnTargets;
     }

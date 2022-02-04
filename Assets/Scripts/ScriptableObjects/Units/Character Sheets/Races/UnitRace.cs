@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenuAttribute]
+[CreateAssetMenu(fileName = "NewRace", menuName = "Character Sheets/Attributes/Race")]
 public class UnitRace : ScriptableObject
 {
     public int dexMod;

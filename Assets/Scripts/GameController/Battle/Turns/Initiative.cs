@@ -1,41 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 
 public class Initiative
 {
-    public static List<CurrentInitiativeOrder> nextInitiativeOrder;
-    public static bool passTurn;
-    public static CurrentInitiativeOrder activePlayer;
-    public static bool combatActive;
-    public static List<GameObject> shellOrder;
-    public static List<CurrentInitiativeOrder> thisInitiativeOrder;
+    public static List<CharacterSheet> thisInitiativeOrder, nextInitiativeOrder;
+    public static bool passTurn, combatActive;
+    public static CharacterSheet activePlayer;
+    public static GameObject activeShell;
 
-
-    public static void AddInitiative(GameObject thisUnit, CharacterSheet sheet)
-    {    
-        nextInitiativeOrder.Add(new CurrentInitiativeOrder(thisUnit, sheet));
-        nextInitiativeOrder.Sort();
-    }
     public static IEnumerator Turns()
     {
-        while (combatActive == true)
+        while (nextInitiativeOrder.Count > 1)
         {
-            thisInitiativeOrder = nextInitiativeOrder;
-            shellOrder = thisInitiativeOrder.Select(thisInitiativeOrder => thisInitiativeOrder.unit).ToList();
+            thisInitiativeOrder = new List<CharacterSheet>();
+            thisInitiativeOrder.AddRange(nextInitiativeOrder);
             for (int i = 0; i < thisInitiativeOrder.Count; i++)
             {
-                passTurn = false;
-                activePlayer = thisInitiativeOrder[i];
-                thisInitiativeOrder[i].unit.GetComponent<IDoTurn>().DoTurn();
-                yield return new WaitUntil(() => passTurn == true);
+                if (nextInitiativeOrder.Contains(thisInitiativeOrder[i]))
+                {
+                    passTurn = false;
+                    activePlayer = thisInitiativeOrder[i];
+                    activeShell = thisInitiativeOrder[i].shell;
+                    activePlayer.Upkeep();
+                    if (thisInitiativeOrder[i].AITurn == false)
+                    {
+                        GameObject currentUI = BattleSystem.currentUI;
+                        currentUI.GetComponent<UIController>().OpenMenu(activePlayer.combatRoot);
+                        yield return new WaitUntil(() => passTurn == true);
+                    }
+                    else
+                    {
+                        AITurnTree thisTree = activeShell.GetComponent<AITurnTree>();
+                        thisTree.enabled = true;
+                        yield return new WaitUntil(() => passTurn == true);
+                        thisTree.enabled = false;
+                    }
+                }
             }
         }
-    }
-    public static void PassTurn()
-    {
-        passTurn = true;
     }
 }

@@ -30,14 +30,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Ability",
-                    "type": "Button",
-                    "id": "b28b0766-358f-4aaf-8bd8-771f118b45d6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Pass",
                     "type": "Button",
                     "id": "b870050b-f402-46c9-be8c-5c22162b205e",
@@ -50,6 +42,14 @@
                     "type": "Value",
                     "id": "bf51aa87-6149-439d-a6e3-87379f2d3692",
                     "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "1537a3c2-1082-4f7e-ae50-bde391fe4421",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -70,7 +70,7 @@
                     "name": "2D Vector",
                     "id": "e668a32a-ebdd-48de-9b72-9909db913dcd",
                     "path": "2DVector",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Movement",
@@ -134,17 +134,6 @@
                 },
                 {
                     "name": "",
-                    "id": "984c794c-2b4a-41e0-8c86-f242236a856c",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Ability",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "5cbbf44f-3f38-4584-84bf-d73ad605c4a3",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -186,6 +175,28 @@
                     "action": "MenuNav",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "a19509b2-589e-46a3-9621-5bc90050ef5d",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d150f7fe-9510-46f7-905f-21980ec4a295",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

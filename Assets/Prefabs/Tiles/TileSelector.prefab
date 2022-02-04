@@ -9,13 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6732446749432875358}
-  - component: {fileID: 7665155386273928130}
-  - component: {fileID: 7341453707675927643}
   - component: {fileID: 4771669854531594610}
   - component: {fileID: -1200792581185012010}
   - component: {fileID: -8512233517713262866}
-  - component: {fileID: 1902145209913335575}
-  - component: {fileID: -1630684449054306096}
+  - component: {fileID: -3874999558680333812}
+  - component: {fileID: -4241113854628244280}
   m_Layer: 0
   m_Name: TileSelector
   m_TagString: TileSelector
@@ -31,41 +29,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6221352841732493946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9327283, y: -0.1590302, z: 4.567338}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &7665155386273928130
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6221352841732493946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &7341453707675927643
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6221352841732493946}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!23 &4771669854531594610
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -127,30 +96,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec9c6fc786d3b642be9eae7392d5961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initiative: {fileID: 11400000, guid: 61abdb5d1a964b74d9cc26a4ca2c5a3c, type: 2}
---- !u!195 &1902145209913335575
-NavMeshAgent:
+--- !u!114 &-3874999558680333812
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6221352841732493946}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5000001
-  m_Speed: 10
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 1
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &-1630684449054306096
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116ed68ca8e4d9444871843aee5b7df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupiedTile: {fileID: 0}
+  obstacle: {fileID: 0}
+  inMotion: 0
+--- !u!114 &-4241113854628244280
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,8 +143,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -8512233517713262866}
-        m_TargetAssemblyTypeName: TileSelectorController, Assembly-CSharp
-        m_MethodName: Movement_performed
+        m_TargetAssemblyTypeName: ControlTileSelector, Assembly-CSharp
+        m_MethodName: MoveIndicator
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -198,20 +159,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -8512233517713262866}
-        m_TargetAssemblyTypeName: TileSelectorController, Assembly-CSharp
+        m_TargetAssemblyTypeName: ControlTileSelector, Assembly-CSharp
         m_MethodName: TileSelected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4872625291780537460, guid: f69d93bc716559a499852b30586ce8fe, type: 3}
-        m_TargetAssemblyTypeName: TileSelectorSpawner, Assembly-CSharp
-        m_MethodName: KillSelector
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -225,8 +174,28 @@ MonoBehaviour:
     m_ActionName: ManualTurn/Interact[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: b28b0766-358f-4aaf-8bd8-771f118b45d6
-    m_ActionName: ManualTurn/Ability[/Keyboard/r]
+    m_ActionId: b870050b-f402-46c9-be8c-5c22162b205e
+    m_ActionName: ManualTurn/Pass[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bf51aa87-6149-439d-a6e3-87379f2d3692
+    m_ActionName: ManualTurn/MenuNav[/Keyboard/s,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8512233517713262866}
+        m_TargetAssemblyTypeName: ControlTileSelector, Assembly-CSharp
+        m_MethodName: Cancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1537a3c2-1082-4f7e-ae50-bde391fe4421
+    m_ActionName: ManualTurn/Cancel[/Keyboard/escape,/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ManualTurn

@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class ListenerTemplate<T> : MonoBehaviour, IEventListener<T>
 {
-   
+
     public abstract UnityEvent<T> unityEvent { get; }
     public abstract EventTemplate<T> gameEvent { get; }
 

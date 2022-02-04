@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class UnitMover
 {
-    public static void MoveToSelector(Transform selection, CurrentInitiativeOrder activePlayer)
+    public static void Use(GameObject selection, GameObject unit)
     {
-        if(Vector3.Distance(selection.position,activePlayer.unit.transform.position)< activePlayer.sheet.sheetDex)
-        {
-            activePlayer.unit.GetComponent<NavMeshAgent>().SetDestination(selection.position);
-        }
+        NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
+        TileOccupation control = unit.GetComponent<TileOccupation>();
+        control.inMotion = true;
+        control.ResetTile();
+        agent.SetDestination(selection.transform.rotation * (selection.transform.position + new Vector3(0, 1, 0)));
+        control.SetTile(selection);
     }
 }

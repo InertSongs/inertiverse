@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 7634231146664651138}
   - component: {fileID: 7634231146664651139}
   - component: {fileID: 7634231146664651136}
-  - component: {fileID: 7634231146664651148}
   - component: {fileID: 8381943976162162964}
-  - component: {fileID: 1778700353}
+  - component: {fileID: -6208871814438242764}
   m_Layer: 5
   m_Name: SceneUI
   m_TagString: Untagged
@@ -102,20 +101,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7634231146664651148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7634231146664651137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 376e2d52cb79e6943a36830e2c809a1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 7831662089574132013, guid: 22a06b41d16dc474cb8483cecbedda01, type: 3}
-  buttonOffset: 50
 --- !u!114 &8381943976162162964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,9 +136,9 @@ MonoBehaviour:
     m_ActionName: ManualTurn/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1778700353}
+      - m_Target: {fileID: -6208871814438242764}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: CompleteSelection
+        m_MethodName: ConfirmSelection
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -166,30 +151,14 @@ MonoBehaviour:
     m_ActionId: 97bd1c0f-655d-49d8-8c51-7705159da0ff
     m_ActionName: ManualTurn/Interact[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1778700353}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: OpenAbilityMenu
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b28b0766-358f-4aaf-8bd8-771f118b45d6
-    m_ActionName: ManualTurn/Ability[/Keyboard/r]
-  - m_PersistentCalls:
       m_Calls: []
     m_ActionId: b870050b-f402-46c9-be8c-5c22162b205e
     m_ActionName: ManualTurn/Pass[/Keyboard/q]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1778700353}
+      - m_Target: {fileID: -6208871814438242764}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: IncrementSelection
+        m_MethodName: Increment
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -201,12 +170,28 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bf51aa87-6149-439d-a6e3-87379f2d3692
     m_ActionName: ManualTurn/MenuNav[/Keyboard/s,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6208871814438242764}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: Cancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1537a3c2-1082-4f7e-ae50-bde391fe4421
+    m_ActionName: ManualTurn/Cancel[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ManualTurn
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1778700353
+--- !u!114 &-6208871814438242764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,7 +200,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7634231146664651137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fda514a2b431b24d84dc41523a950a1, type: 3}
+  m_Script: {fileID: 11500000, guid: b90915f25eb60ac4286bb75d8bd79c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selection: {fileID: 11400000, guid: 8d8bc2666a6a6e84dba705428829dab8, type: 2}
+  listGenerator: {fileID: 11400000, guid: 5733e5ef0a3d56543b5da24d14771d65, type: 2}

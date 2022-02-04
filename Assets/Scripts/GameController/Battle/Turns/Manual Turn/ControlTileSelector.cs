@@ -1,23 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.AI;
-using UnityEngine.Events;
-using System;
 
 public class ControlTileSelector : MonoBehaviour
 {
-    private float playerSpeed = 3f;
-       
-    public void Movement_performed(InputAction.CallbackContext context)
+    RootTurnAction spawner;
+    Vector3 offset = new Vector3(0, 2, 0);
+    float inputScale = 1.5f;
+    
+    public void SetSpawner (RootTurnAction _spawner)
     {
-        NavMeshAgent agent = gameObject.GetComponent<NavMeshAgent>();
-        Vector2 inputVector = context.ReadValue<Vector2>();
-        Vector3 yInputVector = new Vector3(inputVector.x, 0, inputVector.y) * playerSpeed ;
-        Vector3 checkInputVector = gameObject.transform.position + yInputVector;
-        agent.SetDestination(checkInputVector);
+        spawner = _spawner;
+    }
+    public void MoveIndicator(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Transform ofSelector = gameObject.transform;
+            Collider[] sphereHits = Physics.OverlapSphere(ofSelector.position, 3);
+            Vector3 inputToV3 = new Vector3(context.ReadValue<Vector2>().x * inputScale, 0, context.ReadValue<Vector2>().y * inputScale);
+            List<float> tileDistances = new List<float>();
+            foreach (Collider collider in sphereHits)
+            {
+                tileDistances.Add(Vector3.Distance(collider.gameObject.transform.position - gameObject.GetComponent<TileOccupation>().occupiedTile.transform.position, inputToV3));
+            }
+            GameObject target = sphereHits[tileDistances.IndexOf(tileDistances.Min())].gameObject;
+            if (spawner.selectRange.Contains(target))
+            {
+                ofSelector.position = target.transform.position + target.transform.rotation * offset;
+                ofSelector.rotation = target.transform.rotation;
+            }
+        }
     }
     public void TileSelected(InputAction.CallbackContext context)
     {
-        UnitMover.MoveToSelector(gameObject.transform,Initiative.activePlayer);
+        if (context.started)
+        {
+            spawner.ActionSelection(gameObject.GetComponent<TileOccupation>().occupiedTile);
+        }
+    }
+    public void Cancel(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            spawner.CancelCombatSelection();
+        }
     }
 }

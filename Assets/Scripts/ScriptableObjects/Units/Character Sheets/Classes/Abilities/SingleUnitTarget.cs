@@ -1,18 +1,35 @@
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "NewSingleUnitTargetAbility", menuName = "Character Sheets/Abilities/Single Unit Target")]
 public class SingleUnitTarget : Ability
 {
-    private List<CurrentInitiativeOrder> activeTargets;
-    private List<CharacterSheet> activeSheets;
-    private List<GameObject> activeShells;
-    public override void PerformManual()
+    public override void SelectedInCombat()
     {
-        activeTargets = OtherUnitsInRange.SetTargets(this);
-        activeSheets = activeTargets.Select(activeTargets => activeTargets.sheet).ToList();
-        activeShells = activeTargets.Select(activeTargets => activeTargets.unit).ToList();
-        UI.GetComponent<UIController>().OpenMenu(activeSheets);
+        ShowRange();
+        SpawnTileSelector(this);
+    }
+    public override void ActionSelection(GameObject selection)
+    {
+        if (HitList(selection).Count > 0)
+        {
+                KillTileSelector();
+                Attention.Affect(Initiative.activePlayer, HitList(selection)[0], attentionEffect);
+                TaxAbility();
+                Complete();
+        }
+    }
+    public override List<CharacterSheet> HitList(GameObject target)
+    {
+        List<CharacterSheet> hits = new List<CharacterSheet>();
+        foreach (CharacterSheet sheet in Initiative.nextInitiativeOrder)
+        {
+            if (target == sheet.shell.GetComponent<TileOccupation>().occupiedTile)
+            {
+                hits.Add(sheet);
+            }
+        }
+        return hits;
     }
 }

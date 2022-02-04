@@ -43,14 +43,6 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Ability"",
-                    ""type"": ""Button"",
-                    ""id"": ""b28b0766-358f-4aaf-8bd8-771f118b45d6"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Pass"",
                     ""type"": ""Button"",
                     ""id"": ""b870050b-f402-46c9-be8c-5c22162b205e"",
@@ -63,6 +55,14 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""bf51aa87-6149-439d-a6e3-87379f2d3692"",
                     ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""1537a3c2-1082-4f7e-ae50-bde391fe4421"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -83,7 +83,7 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""name"": ""2D Vector"",
                     ""id"": ""e668a32a-ebdd-48de-9b72-9909db913dcd"",
                     ""path"": ""2DVector"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
@@ -147,17 +147,6 @@ public class @InputManager : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""984c794c-2b4a-41e0-8c86-f242236a856c"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Ability"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""5cbbf44f-3f38-4584-84bf-d73ad605c4a3"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
@@ -199,6 +188,28 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""action"": ""MenuNav"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a19509b2-589e-46a3-9621-5bc90050ef5d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d150f7fe-9510-46f7-905f-21980ec4a295"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -210,9 +221,9 @@ public class @InputManager : IInputActionCollection, IDisposable
         m_ManualTurn_ShowMoveRange = m_ManualTurn.FindAction("Show Move Range", throwIfNotFound: true);
         m_ManualTurn_Movement = m_ManualTurn.FindAction("Movement", throwIfNotFound: true);
         m_ManualTurn_Interact = m_ManualTurn.FindAction("Interact", throwIfNotFound: true);
-        m_ManualTurn_Ability = m_ManualTurn.FindAction("Ability", throwIfNotFound: true);
         m_ManualTurn_Pass = m_ManualTurn.FindAction("Pass", throwIfNotFound: true);
         m_ManualTurn_MenuNav = m_ManualTurn.FindAction("MenuNav", throwIfNotFound: true);
+        m_ManualTurn_Cancel = m_ManualTurn.FindAction("Cancel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -265,9 +276,9 @@ public class @InputManager : IInputActionCollection, IDisposable
     private readonly InputAction m_ManualTurn_ShowMoveRange;
     private readonly InputAction m_ManualTurn_Movement;
     private readonly InputAction m_ManualTurn_Interact;
-    private readonly InputAction m_ManualTurn_Ability;
     private readonly InputAction m_ManualTurn_Pass;
     private readonly InputAction m_ManualTurn_MenuNav;
+    private readonly InputAction m_ManualTurn_Cancel;
     public struct ManualTurnActions
     {
         private @InputManager m_Wrapper;
@@ -275,9 +286,9 @@ public class @InputManager : IInputActionCollection, IDisposable
         public InputAction @ShowMoveRange => m_Wrapper.m_ManualTurn_ShowMoveRange;
         public InputAction @Movement => m_Wrapper.m_ManualTurn_Movement;
         public InputAction @Interact => m_Wrapper.m_ManualTurn_Interact;
-        public InputAction @Ability => m_Wrapper.m_ManualTurn_Ability;
         public InputAction @Pass => m_Wrapper.m_ManualTurn_Pass;
         public InputAction @MenuNav => m_Wrapper.m_ManualTurn_MenuNav;
+        public InputAction @Cancel => m_Wrapper.m_ManualTurn_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_ManualTurn; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -296,15 +307,15 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnInteract;
-                @Ability.started -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnAbility;
-                @Ability.performed -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnAbility;
-                @Ability.canceled -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnAbility;
                 @Pass.started -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnPass;
                 @Pass.performed -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnPass;
                 @Pass.canceled -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnPass;
                 @MenuNav.started -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnMenuNav;
                 @MenuNav.performed -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnMenuNav;
                 @MenuNav.canceled -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnMenuNav;
+                @Cancel.started -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_ManualTurnActionsCallbackInterface.OnCancel;
             }
             m_Wrapper.m_ManualTurnActionsCallbackInterface = instance;
             if (instance != null)
@@ -318,15 +329,15 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @Ability.started += instance.OnAbility;
-                @Ability.performed += instance.OnAbility;
-                @Ability.canceled += instance.OnAbility;
                 @Pass.started += instance.OnPass;
                 @Pass.performed += instance.OnPass;
                 @Pass.canceled += instance.OnPass;
                 @MenuNav.started += instance.OnMenuNav;
                 @MenuNav.performed += instance.OnMenuNav;
                 @MenuNav.canceled += instance.OnMenuNav;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
             }
         }
     }
@@ -336,8 +347,8 @@ public class @InputManager : IInputActionCollection, IDisposable
         void OnShowMoveRange(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnAbility(InputAction.CallbackContext context);
         void OnPass(InputAction.CallbackContext context);
         void OnMenuNav(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
 }

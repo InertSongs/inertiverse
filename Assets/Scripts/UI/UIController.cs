@@ -4,36 +4,53 @@ using UnityEngine.InputSystem;
 
 public class UIController : MonoBehaviour
 {
-    private List<ButtonPair> activeButtonList = new List<ButtonPair>();
-    private ButtonPair currentSelection;
-
-    private void Awake()
+    public AutoList listGenerator;
+    Coroutine activeMenu;
+    public void Increment(InputAction.CallbackContext context)
     {
-        HandleSelection.InitializeSelectionHandler();
-    }
-    public void OpenMenu<T>(List<T> menuRequest)
-    {
-        activeButtonList = gameObject.GetComponent<AutoList>().PopUp(menuRequest);
-        currentSelection = activeButtonList[0];
-        currentSelection.button.Select();
-    }
-    public void IncrementSelection(InputAction.CallbackContext context)
-    {
-        if(context.performed)
+        if (context.performed && UI.activeButtonList.Count > 0)
         {
-            currentSelection = activeButtonList[ListNav.SetIndex(activeButtonList.Count, activeButtonList.IndexOf(currentSelection) + Mathf.FloorToInt(context.ReadValue<float>()))];
-            currentSelection.button.Select();
+            UI.currentSelection = UI.activeButtonList[ListNav.SetIndex(UI.activeButtonList.Count, UI.activeButtonList.IndexOf(UI.currentSelection) + Mathf.FloorToInt(context.ReadValue<float>()))];
+            UI.currentSelection.button.Select();
         }
     }
     public void ConfirmSelection(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started && UI.activeButtonList.Count > 0)
         {
-            for (int i = 0; i < activeButtonList.Count; i++)
-            {
-                Destroy(activeButtonList[i].button.gameObject);
-            }
-            HandleSelection.DelegateSelection(currentSelection.action);
+            DestroyMenu();
+            UI.done = true;
         }
+    }
+    public void Cancel(InputAction.CallbackContext context)
+    {
+        if (context.started && UI.activeButtonList.Count > 0)
+        {
+            backMenu();
+        }
+    }
+    public void backMenu()
+    {
+        if (UI.menuHistory.Count > 1)
+        {
+            List<Menu> history = UI.menuHistory;
+            Menu preceeding = history[UI.menuHistory.IndexOf(UI.activeMenu) - 1];
+            StopCoroutine(activeMenu);
+            history.Remove(UI.activeMenu);
+            DestroyMenu();
+            OpenMenu(preceeding);
+        }
+    }
+    public void OpenMenu(Menu menu)
+    {
+        activeMenu = StartCoroutine(menu.Open());
+    }
+    void DestroyMenu()
+    {
+        for (int i = 0; i < UI.activeButtonList.Count; i++)
+        {
+            Destroy(UI.activeButtonList[i].button.gameObject);
+        }
+        UI.activeButtonList.Clear();
     }
 }

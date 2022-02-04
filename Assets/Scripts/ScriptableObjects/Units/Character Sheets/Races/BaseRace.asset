@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0baee5db4f1d244a6ceb19149e0ee0, type: 3}
   m_Name: BaseRace
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: e6ec47e6d21cea24eafe37f238560cbc, type: 2}
-  baseModel: {fileID: 673884024900492865, guid: 920b440decc90c543a93bf179a2a9cab, type: 3}
+  dexMod: 2
+  attentionMod: 0

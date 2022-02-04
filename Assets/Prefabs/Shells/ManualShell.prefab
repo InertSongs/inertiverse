@@ -9,13 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5541638571191450702}
-  - component: {fileID: 8267651358951166139}
   - component: {fileID: -8395960782133341421}
-  - component: {fileID: 4198946965113686781}
   - component: {fileID: 9051185436015594059}
   - component: {fileID: -1604707262181067807}
-  - component: {fileID: 1714145457093114438}
-  - component: {fileID: -1990454662040775832}
+  - component: {fileID: -4218842598699153977}
+  - component: {fileID: 7981605602180101772}
   m_Layer: 0
   m_Name: ManualShell
   m_TagString: Unit
@@ -37,18 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8267651358951166139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3551067304004083850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c0a9aa485d7bc244aae0a5128c8ac1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &-8395960782133341421
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -56,9 +42,9 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3551067304004083850}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -71,22 +57,6 @@ NavMeshAgent:
   m_BaseOffset: 0.75
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!208 &4198946965113686781
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3551067304004083850}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.75, y: 0.75, z: 0.75}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!23 &9051185436015594059
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -136,7 +106,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3551067304004083850}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!136 &1714145457093114438
+--- !u!114 &-4218842598699153977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3551067304004083850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116ed68ca8e4d9444871843aee5b7df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupiedTile: {fileID: 0}
+  obstacle: {fileID: 5677823442728858435, guid: bfcc619b87a2da546918c35c08fb742f, type: 3}
+  inMotion: 0
+--- !u!136 &7981605602180101772
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,81 +135,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1990454662040775832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3551067304004083850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: a08b11bb8cc275743904ed3e7777091c, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6e3e509a-5ce7-4402-a003-9772acce0587
-    m_ActionName: ManualTurn/Show Move Range[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5525b752-093e-449d-a3a0-88d2534c0d2e
-    m_ActionName: ManualTurn/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 97bd1c0f-655d-49d8-8c51-7705159da0ff
-    m_ActionName: ManualTurn/Interact[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8267651358951166139}
-        m_TargetAssemblyTypeName: ManualTurn, Assembly-CSharp
-        m_MethodName: UseAbility
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b28b0766-358f-4aaf-8bd8-771f118b45d6
-    m_ActionName: ManualTurn/Ability[/Keyboard/r]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8267651358951166139}
-        m_TargetAssemblyTypeName: ManualTurn, Assembly-CSharp
-        m_MethodName: ForcePassTurn
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b870050b-f402-46c9-be8c-5c22162b205e
-    m_ActionName: ManualTurn/Pass[/Keyboard/q]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bf51aa87-6149-439d-a6e3-87379f2d3692
-    m_ActionName: ManualTurn/MenuNav[/Keyboard/s,/Keyboard/w]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: ManualTurn
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}

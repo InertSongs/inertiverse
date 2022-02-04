@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0baee5db4f1d244a6ceb19149e0ee0, type: 3}
   m_Name: FastRace
   m_EditorClassIdentifier: 
-  dexMod: 2
+  dexMod: 4
   attentionMod: 2

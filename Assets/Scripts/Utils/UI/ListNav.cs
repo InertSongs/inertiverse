@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
 public class ListNav
 {
     public static int SetIndex(int maxIndex, int nextIndex)
@@ -12,7 +8,7 @@ public class ListNav
         }
         else
         {
-            if(nextIndex > maxIndex-1)
+            if (nextIndex > maxIndex - 1)
             {
                 return 0;
             }

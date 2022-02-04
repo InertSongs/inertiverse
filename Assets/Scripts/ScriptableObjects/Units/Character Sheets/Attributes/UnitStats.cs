@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "NewBaseStats", menuName = "Character Sheets/Attributes/Base Stats")]
 public class UnitStats : ScriptableObject
 {
     public int attention;
     public int dex;
-    public int damage;
 }

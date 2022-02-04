@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e134c07cb85824fbfc0e865be01368, type: 3}
+  m_Name: RootAbilityAction
+  m_EditorClassIdentifier: 
+  defaultAP: 1
+  selectorPrefab: {fileID: 6221352841732493946, guid: 6c9e24eb221f6b540b6234986c908604, type: 3}
+  selector: {fileID: 0}
+  control: {fileID: 0}
+  actionRange: 0
+  attentionEffect: 0
+  indicator: {fileID: 3256366047574153873, guid: fddc60ddd79e4ca4cb71419e893079fb, type: 3}
+  sub: {fileID: 11400000, guid: 869380d0e059e6647b357b8c0c770ef3, type: 2}
